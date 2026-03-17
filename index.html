@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Leader Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles/custom.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: '#0F172A', 800: '#1E293B', 700: '#334155', 600: '#475569' },
+            accent: { DEFAULT: '#F59E0B', dark: '#D97706', light: '#FCD34D' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col" style="background-color:#0F172A;">
+
+<!-- XP Toast -->
+<div id="xp-toast" class="xp-toast hidden" aria-live="polite">
+  <span id="xp-toast-text">+100 XP</span>
+</div>
+
+<!-- Badge Modal -->
+<div id="badge-modal" class="badge-modal hidden" role="dialog" aria-modal="true">
+  <div class="badge-modal-content">
+    <div id="badge-modal-icon" class="text-7xl mb-4 text-center animate-bounce">🏆</div>
+    <h2 class="text-2xl font-bold text-center text-amber-400 mb-2">Badge Unlocked!</h2>
+    <div id="badge-modal-name" class="text-xl font-semibold text-center text-white mb-2"></div>
+    <div id="badge-modal-desc" class="text-slate-300 text-center mb-6"></div>
+    <button onclick="document.getElementById('badge-modal').classList.add('hidden')"
+      class="w-full py-3 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-xl transition-all">
+      Awesome! Keep Going 🚀
+    </button>
+  </div>
+</div>
+
+<!-- Mobile overlay -->
+<div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-20 hidden md:hidden" onclick="closeSidebar()"></div>
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar"
+    class="sidebar w-64 flex-shrink-0 flex flex-col fixed inset-y-0 left-0 z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-300"
+    style="background-color:#1E293B; border-right: 1px solid #334155;">
+
+    <!-- Logo -->
+    <div class="px-6 py-5 border-b border-slate-700">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold"
+          style="background: linear-gradient(135deg,#F59E0B,#D97706);">AI</div>
+        <div>
+          <div class="font-bold text-white text-sm leading-tight">AI Leader</div>
+          <div class="text-amber-400 text-xs font-semibold">Academy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Level -->
+    <div class="px-4 py-4 border-b border-slate-700">
+      <div class="flex items-center gap-3 mb-3">
+        <div id="sidebar-level-icon" class="text-2xl">⚙️</div>
+        <div class="flex-1 min-w-0">
+          <div id="sidebar-level-name" class="text-xs text-slate-400">Level 1</div>
+          <div id="sidebar-user-name" class="text-sm font-semibold text-white truncate">Hrishikesh</div>
+        </div>
+        <div id="sidebar-streak" class="flex items-center gap-1 text-sm">
+          <span class="streak-flame">🔥</span>
+          <span id="sidebar-streak-count" class="font-bold text-amber-400">0</span>
+        </div>
+      </div>
+      <!-- XP Bar -->
+      <div class="relative">
+        <div class="flex justify-between text-xs text-slate-400 mb-1">
+          <span id="sidebar-xp-current">0 XP</span>
+          <span id="sidebar-xp-next">300 XP</span>
+        </div>
+        <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
+          <div id="sidebar-xp-bar" class="progress-bar-animated h-full rounded-full"
+            style="width:0%; background: linear-gradient(90deg,#F59E0B,#FCD34D);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-1 px-3 py-4 space-y-1">
+      <a href="#dashboard" data-route="#dashboard"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700 transition-all group">
+        <span class="text-lg">📊</span>
+        <span class="font-medium text-sm">Dashboard</span>
+      </a>
+      <a href="#course" data-route="#course"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700 transition-all group">
+        <span class="text-lg">🗺️</span>
+        <span class="font-medium text-sm">Course Map</span>
+      </a>
+      <a href="#achievements" data-route="#achievements"
+        class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700 transition-all group">
+        <span class="text-lg">🏆</span>
+        <span class="font-medium text-sm">Achievements</span>
+      </a>
+    </nav>
+
+    <!-- Narration Controls -->
+    <div class="px-4 py-4 border-t border-slate-700">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-sm">🔊</span>
+        <span class="text-xs text-slate-400 font-medium">Narration Speed</span>
+      </div>
+      <select id="narration-rate" onchange="Narration.setRate(parseFloat(this.value))"
+        class="w-full bg-slate-700 text-slate-200 text-xs rounded-lg px-3 py-2 border border-slate-600 focus:outline-none focus:border-amber-500">
+        <option value="0.8">0.8x — Slow</option>
+        <option value="1" selected>1.0x — Normal</option>
+        <option value="1.25">1.25x — Fast</option>
+        <option value="1.5">1.5x — Very Fast</option>
+      </select>
+    </div>
+
+    <!-- Sidebar Close (mobile) -->
+    <button id="sidebar-close" onclick="closeSidebar()"
+      class="md:hidden absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="flex-1 md:ml-64 flex flex-col min-h-screen">
+
+    <!-- Top bar (mobile) -->
+    <header class="md:hidden flex items-center justify-between px-4 py-3 border-b border-slate-700"
+      style="background-color:#1E293B;">
+      <button onclick="openSidebar()" class="text-slate-300 hover:text-white text-xl">☰</button>
+      <div class="font-bold text-amber-400 text-sm">AI Leader Academy</div>
+      <div id="mobile-xp" class="text-xs text-amber-400 font-semibold">0 XP</div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app" class="flex-1 p-4 md:p-8 overflow-auto">
+      <!-- Views render here -->
+      <div class="flex items-center justify-center h-64">
+        <div class="text-center">
+          <div class="text-4xl mb-4 animate-spin">⚙️</div>
+          <p class="text-slate-400">Loading AI Leader Academy...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="md:hidden fixed bottom-0 inset-x-0 flex border-t border-slate-700 z-20"
+      style="background-color:#1E293B;">
+      <a href="#dashboard" data-route="#dashboard"
+        class="mobile-nav-link flex-1 flex flex-col items-center py-2 text-slate-400 hover:text-amber-400 transition-colors">
+        <span class="text-xl">📊</span>
+        <span class="text-xs mt-1">Dashboard</span>
+      </a>
+      <a href="#course" data-route="#course"
+        class="mobile-nav-link flex-1 flex flex-col items-center py-2 text-slate-400 hover:text-amber-400 transition-colors">
+        <span class="text-xl">🗺️</span>
+        <span class="text-xs mt-1">Course</span>
+      </a>
+      <a href="#achievements" data-route="#achievements"
+        class="mobile-nav-link flex-1 flex flex-col items-center py-2 text-slate-400 hover:text-amber-400 transition-colors">
+        <span class="text-xl">🏆</span>
+        <span class="text-xs mt-1">Badges</span>
+      </a>
+    </nav>
+  </div>
+</div>
+
+<!-- DATA FILES -->
+<script src="data/course-structure.js"></script>
+
+<!-- CONTENT FILES (stubs — real content loaded separately) -->
+<script src="data/content/m01-og-101.js"></script>
+<script src="data/content/m02-refinery-ops.js"></script>
+<script src="data/content/m03-apc.js"></script>
+<script src="data/content/m04-rto.js"></script>
+<script src="data/content/m05-ai-ml.js"></script>
+<script src="data/content/m06-industrial-data.js"></script>
+<script src="data/content/m07-ai-refineries.js"></script>
+<script src="data/content/m08-cybersecurity.js"></script>
+<script src="data/content/m09-strategy.js"></script>
+<script src="data/content/m10-architecture.js"></script>
+<script src="data/content/m11-agile-mlops.js"></script>
+<script src="data/content/m12-leading.js"></script>
+<script src="data/content/m13-stakeholders.js"></script>
+<script src="data/content/m14-interview-cases.js"></script>
+
+<!-- QUIZ FILES -->
+<script src="data/quizzes/q01.js"></script>
+<script src="data/quizzes/q02.js"></script>
+<script src="data/quizzes/q03.js"></script>
+<script src="data/quizzes/q04.js"></script>
+<script src="data/quizzes/q05.js"></script>
+<script src="data/quizzes/q06.js"></script>
+<script src="data/quizzes/q07.js"></script>
+<script src="data/quizzes/q08.js"></script>
+<script src="data/quizzes/q09.js"></script>
+<script src="data/quizzes/q10.js"></script>
+<script src="data/quizzes/q11.js"></script>
+<script src="data/quizzes/q12.js"></script>
+<script src="data/quizzes/q13.js"></script>
+<script src="data/quizzes/q14.js"></script>
+<script src="data/quizzes/boss-day1.js"></script>
+<script src="data/quizzes/boss-day2.js"></script>
+<script src="data/quizzes/boss-day3.js"></script>
+<script src="data/quizzes/boss-day4.js"></script>
+<script src="data/quizzes/final-assessment.js"></script>
+
+<!-- CORE JS -->
+<script src="js/utils.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/state.js"></script>
+<script src="js/gamification.js"></script>
+<script src="js/narration.js"></script>
+<script src="js/quiz-engine.js"></script>
+<script src="js/router.js"></script>
+
+<!-- VIEWS -->
+<script src="views/dashboard.js"></script>
+<script src="views/coursemap.js"></script>
+<script src="views/module-reader.js"></script>
+<script src="views/quiz-view.js"></script>
+<script src="views/achievements.js"></script>
+
+<!-- APP BOOTSTRAP (LAST) -->
+<script src="js/app.js"></script>
+
+<script>
+  function openSidebar() {
+    document.getElementById('sidebar').classList.remove('-translate-x-full');
+    document.getElementById('sidebar-overlay').classList.remove('hidden');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.add('-translate-x-full');
+    document.getElementById('sidebar-overlay').classList.add('hidden');
+  }
+  // Close sidebar on nav click (mobile)
+  document.querySelectorAll('[data-route]').forEach(el => {
+    el.addEventListener('click', () => {
+      if (window.innerWidth < 768) closeSidebar();
+    });
+  });
+</script>
+</body>
+</html>

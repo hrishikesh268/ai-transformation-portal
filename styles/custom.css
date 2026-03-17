@@ -1,0 +1,374 @@
+/* ============================================
+   AI Leader Academy — Custom CSS
+   Dark Navy Theme with Amber Accents
+   ============================================ */
+
+/* ---------- Keyframe Animations ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.08); opacity: 1; }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pulseXP {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245,158,11,0.5); }
+  50%       { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(245,158,11,0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes flame {
+  0%, 100% { transform: scaleY(1) rotate(-2deg); }
+  50%       { transform: scaleY(1.1) rotate(2deg); }
+}
+
+@keyframes progressFill {
+  from { width: 0; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes toastSlide {
+  0%   { opacity: 0; transform: translateY(-20px) scale(0.9); }
+  15%  { opacity: 1; transform: translateY(0) scale(1); }
+  80%  { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-20px) scale(0.9); }
+}
+
+/* ---------- XP Toast ---------- */
+.xp-toast {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(16,185,129,0.4);
+  pointer-events: none;
+  animation: toastSlide 2.5s ease forwards;
+}
+.xp-toast.hidden {
+  display: none;
+}
+
+/* ---------- Badge Modal ---------- */
+.badge-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+.badge-modal.hidden {
+  display: none;
+}
+.badge-modal-content {
+  background: linear-gradient(145deg, #1E293B, #0F172A);
+  border: 2px solid #F59E0B;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 60px rgba(245,158,11,0.3), 0 32px 64px rgba(0,0,0,0.5);
+  animation: bounceIn 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* ---------- Card Hover ---------- */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* ---------- Progress Bar Animated ---------- */
+.progress-bar-animated {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: progressFill 0.8s ease forwards;
+}
+
+/* ---------- Section Card ---------- */
+.section-card {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.4s ease;
+}
+.section-card:hover {
+  border-color: #475569;
+}
+.section-card.intro    { border-left: 4px solid #F59E0B; }
+.section-card.concept  { border-left: 4px solid #3B82F6; }
+.section-card.deep-dive { border-left: 4px solid #8B5CF6; }
+.section-card.case-study { border-left: 4px solid #10B981; }
+.section-card.summary  { border-left: 4px solid #EC4899; }
+
+/* ---------- Quiz Options ---------- */
+.quiz-option {
+  background: #1E293B;
+  border: 2px solid #334155;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-option:hover:not(.disabled) {
+  border-color: #F59E0B;
+  background: #263448;
+  transform: translateX(4px);
+}
+.quiz-option.correct {
+  border-color: #10B981;
+  background: rgba(16,185,129,0.15);
+  animation: pulseXP 0.5s ease;
+}
+.quiz-option.wrong {
+  border-color: #EF4444;
+  background: rgba(239,68,68,0.12);
+  animation: fadeIn 0.3s ease;
+}
+.quiz-option.disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.quiz-option.selected {
+  border-color: #F59E0B;
+}
+
+/* ---------- Diagram Container ---------- */
+.diagram-container {
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  background: #0F172A;
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.diagram-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Narration Active ---------- */
+.narration-active {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
+  animation: pulseXP 2s ease infinite;
+}
+
+/* ---------- Tooltip ---------- */
+.tooltip-wrapper {
+  position: relative;
+  display: inline;
+}
+.tooltip-trigger {
+  border-bottom: 1px dashed #F59E0B;
+  color: #FCD34D;
+  cursor: help;
+}
+.tooltip-box {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  color: #CBD5E1;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  margin-bottom: 6px;
+  min-width: 200px;
+  white-space: normal;
+  max-width: 260px;
+}
+.tooltip-wrapper:hover .tooltip-box {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ---------- Level Badge ---------- */
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #F59E0B22, #F59E0B44);
+  border: 1px solid #F59E0B66;
+  color: #FCD34D;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Streak Flame ---------- */
+.streak-flame {
+  display: inline-block;
+  animation: flame 1.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* ---------- Scrollbar Dark Theme ---------- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0F172A; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ---------- Nav Link Active State ---------- */
+.nav-link.active {
+  background: rgba(245,158,11,0.15);
+  color: #FCD34D;
+  border-left: 3px solid #F59E0B;
+}
+
+/* ---------- Module Status Cards ---------- */
+.module-card { position: relative; overflow: hidden; }
+.module-card.status-locked { opacity: 0.55; filter: grayscale(0.4); }
+.module-card.status-in_progress::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F59E0B, #FCD34D, #F59E0B);
+  background-size: 200%;
+  animation: shimmer 2s linear infinite;
+}
+.module-card.status-completed::after {
+  content: '✅';
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ---------- Day Color Themes ---------- */
+.day-day1 { --day-color: #F59E0B; }
+.day-day2 { --day-color: #10B981; }
+.day-day3 { --day-color: #8B5CF6; }
+.day-day4 { --day-color: #3B82F6; }
+
+/* ---------- Shimmer Effect ---------- */
+.shimmer-bg {
+  background: linear-gradient(90deg, #1E293B 25%, #263448 50%, #1E293B 75%);
+  background-size: 200%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ---------- General Page Fade ---------- */
+#app > * { animation: fadeIn 0.35s ease; }
+
+/* ---------- Video Embed ---------- */
+.video-embed-wrapper {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #334155;
+  background: #000;
+  aspect-ratio: 16/9;
+  margin: 1rem 0;
+}
+.video-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ---------- Score Circle ---------- */
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  border: 6px solid;
+  animation: bounceIn 0.6s ease;
+}
+.score-circle.pass { border-color: #10B981; color: #10B981; background: rgba(16,185,129,0.1); }
+.score-circle.fail { border-color: #EF4444; color: #EF4444; background: rgba(239,68,68,0.1); }
+
+/* ---------- Badge Cards ---------- */
+.badge-card {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.badge-card.unlocked {
+  border-color: #F59E0B44;
+  background: linear-gradient(145deg, #1E293B, #1a2540);
+}
+.badge-card.unlocked:hover {
+  transform: translateY(-2px);
+  border-color: #F59E0B88;
+  box-shadow: 0 8px 32px rgba(245,158,11,0.15);
+}
+.badge-card.locked {
+  opacity: 0.45;
+  filter: grayscale(0.6);
+}
+
+/* ---------- XP History Log ---------- */
+.xp-log-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: #1E293B;
+  border: 1px solid #2D3748;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ---------- Mobile Adjustments ---------- */
+@media (max-width: 768px) {
+  .xp-toast { top: auto; bottom: 5rem; right: 1rem; }
+  #app { padding-bottom: 5rem; }
+}
+
+/* ---------- Tailwind Overrides ---------- */
+.bg-navy-900 { background-color: #0F172A; }
+.bg-navy-800 { background-color: #1E293B; }
+.bg-navy-700 { background-color: #334155; }

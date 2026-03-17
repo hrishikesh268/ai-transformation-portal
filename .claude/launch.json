@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "AI Transformation Portal",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3000", "--directory", "C:\\Users\\kulkarni hrishikesh\\OneDrive - The Boston Consulting Group, Inc\\Desktop\\Personal\\Vibecoding\\ai-transformation-portal"],
+      "port": 3000
+    }
+  ]
+}
