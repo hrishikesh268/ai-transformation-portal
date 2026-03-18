@@ -5,6 +5,7 @@ window.MODULE_M07 = {
   subtitle: '6 High-Value Use Cases',
   sections: [
     {
+      id: 'm07-s01',
       type: 'intro',
       title: 'Where AI Creates the Most Value',
       content: `
@@ -27,6 +28,7 @@ window.MODULE_M07 = {
       ]
     },
     {
+      id: 'm07-s02',
       type: 'concept',
       title: 'Use Case 1: Predictive Maintenance',
       content: `
@@ -53,6 +55,7 @@ window.MODULE_M07 = {
       ]
     },
     {
+      id: 'm07-s03',
       type: 'concept',
       title: 'Use Case 2: AI-Augmented Process Optimization',
       content: `
@@ -74,6 +77,7 @@ window.MODULE_M07 = {
       ]
     },
     {
+      id: 'm07-s04',
       type: 'concept',
       title: 'Use Cases 3-6: Crude, Quality, Safety, Energy',
       content: `
@@ -104,6 +108,7 @@ window.MODULE_M07 = {
       ]
     },
     {
+      id: 'm07-s05',
       type: 'case-study',
       title: 'BCG Case: Full AI Stack at a European Refinery',
       content: `
@@ -135,6 +140,7 @@ window.MODULE_M07 = {
       ]
     },
     {
+      id: 'm07-s06',
       type: 'summary',
       title: 'Day 2 Summary — The AI Engine',
       content: `
@@ -159,6 +165,66 @@ window.MODULE_M07 = {
       ]
     }
   ],
+  diagram: {
+    title: 'AI Use Case Value vs. Feasibility Matrix',
+    description: 'Position each use case on value (ROI potential) vs. feasibility (data readiness, technical complexity). Start in the top-right quadrant.',
+    svgContent: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" font-family="Arial, sans-serif">' +
+      '<rect width="860" height="400" fill="#0f172a" rx="10"/>' +
+      '<text x="430" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#f1f5f9">AI Use Case Prioritisation Matrix — Value vs. Feasibility</text>' +
+      // Axes
+      '<rect x="80" y="45" width="700" height="300" fill="#1e293b" rx="6" opacity="0.5"/>' +
+      '<line x1="80" y1="345" x2="780" y2="345" stroke="#475569" stroke-width="1.5"/>' +
+      '<line x1="80" y1="45" x2="80" y2="345" stroke="#475569" stroke-width="1.5"/>' +
+      // Axis labels
+      '<text x="430" y="385" text-anchor="middle" font-size="12" fill="#94a3b8">Feasibility →  (Data Available + Low Complexity)</text>' +
+      '<text x="22" y="200" text-anchor="middle" font-size="12" fill="#94a3b8" transform="rotate(-90,22,200)">Value (ROI Potential) →</text>' +
+      // Quadrant dividers
+      '<line x1="430" y1="45" x2="430" y2="345" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>' +
+      '<line x1="80" y1="195" x2="780" y2="195" stroke="#334155" stroke-width="1" stroke-dasharray="4,4"/>' +
+      // Quadrant labels
+      '<text x="250" y="68" text-anchor="middle" font-size="10" fill="#ef4444" opacity="0.7">AVOID</text>' +
+      '<text x="620" y="68" text-anchor="middle" font-size="10" fill="#f59e0b" opacity="0.7">FILL-INS</text>' +
+      '<text x="250" y="218" text-anchor="middle" font-size="10" fill="#60a5fa" opacity="0.7">STRATEGIC BETS</text>' +
+      '<text x="620" y="218" text-anchor="middle" font-size="10" fill="#34d399" opacity="0.8" font-weight="bold">QUICK WINS ★</text>' +
+      // Bubble: Predictive Maintenance (top-right: high value, high feasibility)
+      '<circle cx="660" cy="100" r="38" fill="#f59e0b" opacity="0.25" stroke="#f59e0b" stroke-width="1.5"/>' +
+      '<text x="660" y="97" text-anchor="middle" font-size="10" font-weight="bold" fill="#fbbf24">Predictive</text>' +
+      '<text x="660" y="112" text-anchor="middle" font-size="10" font-weight="bold" fill="#fbbf24">Maintenance</text>' +
+      '<text x="660" y="126" text-anchor="middle" font-size="9" fill="#94a3b8">$5-15M/yr</text>' +
+      // Bubble: Energy Optimization (high feasibility, medium-high value)
+      '<circle cx="700" cy="175" r="30" fill="#ec4899" opacity="0.25" stroke="#ec4899" stroke-width="1.5"/>' +
+      '<text x="700" y="172" text-anchor="middle" font-size="9" font-weight="bold" fill="#f472b6">Energy</text>' +
+      '<text x="700" y="185" text-anchor="middle" font-size="9" font-weight="bold" fill="#f472b6">Optim.</text>' +
+      // Bubble: Quality/Virtual Analyzer (medium feasibility, medium value)
+      '<circle cx="560" cy="160" r="28" fill="#a78bfa" opacity="0.25" stroke="#a78bfa" stroke-width="1.5"/>' +
+      '<text x="560" y="157" text-anchor="middle" font-size="9" font-weight="bold" fill="#c4b5fd">Quality</text>' +
+      '<text x="560" y="170" text-anchor="middle" font-size="9" font-weight="bold" fill="#c4b5fd">Predict.</text>' +
+      // Bubble: Safety/Anomaly Detection (medium-high feasibility, high value)
+      '<circle cx="600" cy="105" r="32" fill="#ef4444" opacity="0.25" stroke="#ef4444" stroke-width="1.5"/>' +
+      '<text x="600" y="102" text-anchor="middle" font-size="9" font-weight="bold" fill="#fca5a5">Safety &</text>' +
+      '<text x="600" y="115" text-anchor="middle" font-size="9" font-weight="bold" fill="#fca5a5">Anomaly</text>' +
+      // Bubble: Process Optimization (medium feasibility, very high value)
+      '<circle cx="440" cy="75" r="42" fill="#3b82f6" opacity="0.25" stroke="#3b82f6" stroke-width="1.5"/>' +
+      '<text x="440" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#93c5fd">Process</text>' +
+      '<text x="440" y="84" text-anchor="middle" font-size="10" font-weight="bold" fill="#93c5fd">Optimisation</text>' +
+      '<text x="440" y="98" text-anchor="middle" font-size="9" fill="#94a3b8">$10-30M/yr</text>' +
+      // Bubble: Crude Selection (low-medium feasibility, high value)
+      '<circle cx="270" cy="90" r="36" fill="#10b981" opacity="0.25" stroke="#10b981" stroke-width="1.5"/>' +
+      '<text x="270" y="87" text-anchor="middle" font-size="10" font-weight="bold" fill="#6ee7b7">Crude</text>' +
+      '<text x="270" y="101" text-anchor="middle" font-size="10" font-weight="bold" fill="#6ee7b7">Selection</text>' +
+      '<text x="270" y="115" text-anchor="middle" font-size="9" fill="#94a3b8">$5-20M/yr</text>' +
+      // Legend
+      '<text x="430" y="365" text-anchor="middle" font-size="10" fill="#64748b">Bubble size = relative program investment required</text>' +
+      '</svg>'
+  },
+  video: {
+    videoId: 'aR5N2Jl8k14',
+    title: 'The Incredible Inventions of Intuitive AI',
+    start: 60,
+    end: 400,
+    placement: 'm07-s03',
+    description: 'Maurice Conti (TED) shows real examples of AI working alongside humans in manufacturing and industrial settings — exactly the co-pilot model you will deploy in refineries.'
+  },
   glossary: [
     { term: 'Predictive Maintenance', definition: 'Using ML/sensor data to predict equipment failures before they occur, enabling planned maintenance.' },
     { term: 'Virtual Analyzer', definition: 'Software model that predicts product quality in real-time from process variables, eliminating lab analysis delays.' },

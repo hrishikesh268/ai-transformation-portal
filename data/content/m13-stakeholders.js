@@ -5,6 +5,7 @@ window.MODULE_M13 = {
   subtitle: 'Win the Room, Every Time',
   sections: [
     {
+      id: 'm13-s01',
       type: 'intro',
       title: 'Communication Is Your Superpower',
       content: `<p>You can have the best AI strategy in the world — and fail because you couldn't get a refinery operations director to trust you, or couldn't explain the business case to a CFO in three minutes. Communication is the multiplier on all your technical knowledge.</p>
@@ -17,6 +18,7 @@ window.MODULE_M13 = {
       ]
     },
     {
+      id: 'm13-s02',
       type: 'concept',
       title: 'The Four Stakeholder Archetypes',
       content: `<p>Every refinery AI transformation involves four primary stakeholder archetypes. Each needs a different conversation:</p>
@@ -46,6 +48,7 @@ window.MODULE_M13 = {
       ]
     },
     {
+      id: 'm13-s03',
       type: 'deep-dive',
       title: 'The Pyramid Principle in Action',
       content: `<p>The Pyramid Principle (Minto) is the communication framework used by all major consulting firms. It states: lead with your answer/recommendation, then support it with arguments, then support arguments with data.</p>
@@ -67,13 +70,14 @@ window.MODULE_M13 = {
         </ul>
       </div>`,
       keyPoints: [
-        'Lead with the answer — executives have 30 seconds for your opening, not 30 minutes',
+        "Lead with the answer — executives have 30 seconds for your opening, not 30 minutes",
         'Three arguments max — research shows three is the optimal number for persuasion',
         'Data supports arguments, arguments support the answer — never lead with data',
         'Practice the "elevator version": can you deliver the recommendation in 2 minutes?'
       ]
     },
     {
+      id: 'm13-s04',
       type: 'concept',
       title: 'Handling Resistance and Tough Questions',
       content: `<p>Expect these questions and have your answers ready:</p>
@@ -92,13 +96,14 @@ window.MODULE_M13 = {
         </div>
       </div>`,
       keyPoints: [
-        'Acknowledge resistance, don\'t dismiss it — validation builds trust',
+        "Acknowledge resistance, don't dismiss it — validation builds trust",
         'The job displacement concern must be addressed directly and honestly',
         'Offering a 90-day A/B test de-risks the commitment and builds credibility',
         'Never oversell — credibility is your most valuable long-term asset'
       ]
     },
     {
+      id: 'm13-s05',
       type: 'summary',
       title: 'Communication Module Summary',
       content: `<p>You are now equipped to win the room with any stakeholder. Key takeaways:</p>
@@ -121,6 +126,59 @@ window.MODULE_M13 = {
       ]
     }
   ],
+  diagram: {
+    title: 'The Pyramid Principle — Answer First Communication',
+    description: 'Lead with your recommendation, support with exactly 3 arguments, ground each argument in evidence. Used by McKinsey, BCG, Bain, and every top consulting firm.',
+    svgContent: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" font-family="Arial, sans-serif">' +
+      '<rect width="860" height="360" fill="#0f172a" rx="10"/>' +
+      '<text x="430" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#f1f5f9">The Pyramid Principle — Answer First Communication</text>' +
+      // Pyramid top
+      '<polygon points="430,48 530,148 330,148" fill="#f59e0b" opacity="0.85"/>' +
+      '<text x="430" y="100" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">THE ANSWER</text>' +
+      '<text x="430" y="116" text-anchor="middle" font-size="9" fill="#1e293b">1 clear recommendation</text>' +
+      '<text x="430" y="130" text-anchor="middle" font-size="9" fill="#1e293b">Lead with this — always</text>' +
+      // Middle tier (3 arguments)
+      '<polygon points="330,154 530,154 600,234 260,234" fill="#3b82f6" opacity="0.7"/>' +
+      '<text x="430" y="185" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">3 SUPPORTING ARGUMENTS</text>' +
+      '<text x="430" y="202" text-anchor="middle" font-size="9" fill="#e2e8f0">Argument 1 · Argument 2 · Argument 3</text>' +
+      '<text x="430" y="218" text-anchor="middle" font-size="9" fill="#bfdbfe">Each directly proves the top-line answer</text>' +
+      // Bottom tier (evidence)
+      '<polygon points="260,240 600,240 700,320 160,320" fill="#1e40af" opacity="0.6"/>' +
+      '<text x="430" y="270" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">SUPPORTING EVIDENCE</text>' +
+      '<text x="430" y="287" text-anchor="middle" font-size="9" fill="#bfdbfe">Data · Benchmarks · Case studies · Calculations</text>' +
+      '<text x="430" y="303" text-anchor="middle" font-size="9" fill="#93c5fd">Each piece of evidence supports exactly ONE argument above it</text>' +
+      // Labels on left side
+      '<text x="145" y="104" text-anchor="end" font-size="10" fill="#fbbf24" font-weight="bold">Answer</text>' +
+      '<text x="145" y="196" text-anchor="end" font-size="10" fill="#93c5fd" font-weight="bold">Arguments</text>' +
+      '<text x="145" y="282" text-anchor="end" font-size="10" fill="#6ea8fe" font-weight="bold">Evidence</text>' +
+      // Arrows from labels
+      '<line x1="150" y1="100" x2="328" y2="100" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2"/>' +
+      '<line x1="150" y1="192" x2="328" y2="192" stroke="#93c5fd" stroke-width="1" stroke-dasharray="3,2"/>' +
+      '<line x1="150" y1="278" x2="258" y2="278" stroke="#6ea8fe" stroke-width="1" stroke-dasharray="3,2"/>' +
+      // "Anti-pattern" box on right
+      '<rect x="625" y="50" width="210" height="240" fill="#1e293b" rx="8" stroke="#ef4444" stroke-width="1.5"/>' +
+      '<text x="730" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#ef4444">❌ AVOID: Bottom-Up</text>' +
+      '<text x="730" y="92" text-anchor="middle" font-size="9" fill="#94a3b8">Start with context...</text>' +
+      '<text x="730" y="108" text-anchor="middle" font-size="9" fill="#94a3b8">Then background...</text>' +
+      '<text x="730" y="124" text-anchor="middle" font-size="9" fill="#94a3b8">Then data point 1...</text>' +
+      '<text x="730" y="140" text-anchor="middle" font-size="9" fill="#94a3b8">Then data point 2...</text>' +
+      '<text x="730" y="156" text-anchor="middle" font-size="9" fill="#94a3b8">Then analysis...</text>' +
+      '<text x="730" y="172" text-anchor="middle" font-size="9" fill="#94a3b8">Then more context...</text>' +
+      '<text x="730" y="200" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="bold">...finally the answer</text>' +
+      '<text x="730" y="220" text-anchor="middle" font-size="9" fill="#64748b">(by which point your</text>' +
+      '<text x="730" y="236" text-anchor="middle" font-size="9" fill="#64748b">audience has checked out)</text>' +
+      // Note at bottom
+      '<text x="430" y="348" text-anchor="middle" font-size="10" fill="#64748b">Developed by Barbara Minto at McKinsey. Used by BCG, Bain, and every major consulting firm worldwide.</text>' +
+      '</svg>'
+  },
+  video: {
+    videoId: 'eIho2S0ZahI',
+    title: 'How to Speak So That People Want to Listen — Julian Treasure (TED)',
+    start: 0,
+    end: 330,
+    placement: 'm13-s03',
+    description: "Julian Treasure's TED talk on the seven deadly sins of speaking and how to command a room. Essential for any consultant who needs to influence senior refinery executives and skeptical operators."
+  },
   glossary: [
     { term: 'Pyramid Principle', definition: 'Communication framework: lead with the answer/recommendation, then provide supporting arguments, then evidence. Developed by Barbara Minto at McKinsey.' },
     { term: 'Stakeholder Mapping', definition: 'Process of identifying all parties affected by or influencing a project, their interests, and appropriate engagement strategies.' },

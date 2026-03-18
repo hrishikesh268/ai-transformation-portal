@@ -188,13 +188,31 @@ window.ModuleReaderView = {
     const tc = typeConfig[section.type] || { icon: '📄', label: section.type || 'Content', border: '#475569' };
 
     let videoHTML = '';
+    // 1. Inline section-level video
     if (section.video) {
       videoHTML = this.renderVideo(section.video);
     }
+    // 2. Module-level video with placement matching this section
+    if (!videoHTML && this.moduleData.video && this.moduleData.video.placement === section.id) {
+      videoHTML = this.renderVideo(this.moduleData.video);
+    }
+    // 3. Module-level videos array (e.g. m05 has two clips)
+    if (!videoHTML && this.moduleData.videos && Array.isArray(this.moduleData.videos)) {
+      const matchingVideo = this.moduleData.videos.find(v => v.placement === section.id);
+      if (matchingVideo) videoHTML = this.renderVideo(matchingVideo);
+    }
 
     let diagramHTML = '';
+    // Inline section diagram
     if (section.diagram) {
       diagramHTML = this.renderDiagram(section.diagram);
+    }
+    // Module-level diagram: show on section index 1 (or 0 if only one section)
+    if (!diagramHTML && this.moduleData.diagram) {
+      const diagShowAt = Math.min(1, (this.moduleData.sections || []).length - 1);
+      if (this.currentSection === diagShowAt) {
+        diagramHTML = this.renderDiagram(this.moduleData.diagram);
+      }
     }
 
     container.innerHTML = `
@@ -265,10 +283,11 @@ window.ModuleReaderView = {
   },
 
   renderDiagram(diagram) {
+    const svgMarkup = diagram.svgContent || diagram.svg || '';
     return `
     <div class="diagram-container mt-4">
-      ${diagram.title ? `<p class="text-sm font-semibold text-slate-300 mb-2">${diagram.title}</p>` : ''}
-      ${diagram.svg || ''}
+      ${diagram.title ? `<p class="text-sm font-semibold text-slate-300 mb-2">📊 ${diagram.title}</p>` : ''}
+      <div class="overflow-x-auto rounded-xl">${svgMarkup}</div>
       ${diagram.description ? `<p class="text-xs text-slate-400 mt-2 text-center italic">${diagram.description}</p>` : ''}
     </div>
     `;

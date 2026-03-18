@@ -5,8 +5,9 @@ window.MODULE_M12 = {
   subtitle: 'What the Role Actually Requires',
   sections: [
     {
+      id: 'm12-s01',
       type: 'intro',
-      title: 'The AI Transformation Leader\'s Role',
+      title: "The AI Transformation Leader's Role",
       content: `<p>The AI Transformation Leader role at BCG is not primarily a technical role — it is a leadership role. Your job is to create the conditions under which AI can deliver value: the strategy, the team, the trust, the operating model, and the culture. Anyone can load a Jupyter notebook. Not everyone can transform a 3,000-person refinery operation.</p>
       <p class="mt-3">This module covers what the role actually demands: the competencies that matter, the challenges you will face, and how the best AI transformation leaders operate.</p>`,
       keyPoints: [
@@ -17,6 +18,7 @@ window.MODULE_M12 = {
       ]
     },
     {
+      id: 'm12-s02',
       type: 'concept',
       title: 'The Four Roles of an AI Leader',
       content: `<p>Effective AI transformation leaders wear four distinct hats, often within the same day:</p>
@@ -46,6 +48,7 @@ window.MODULE_M12 = {
       ]
     },
     {
+      id: 'm12-s03',
       type: 'deep-dive',
       title: 'Managing the Human Side of AI',
       content: `<p>The #1 reason AI transformation programs fail is not technology — it's people. Here's how to navigate the key human challenges:</p>
@@ -71,6 +74,7 @@ window.MODULE_M12 = {
       ]
     },
     {
+      id: 'm12-s04',
       type: 'concept',
       title: 'KPIs for the AI Transformation Leader',
       content: `<p>How do you measure your own success as an AI transformation leader? Beyond financial ROI, these are the leading indicators of a healthy program:</p>
@@ -100,6 +104,7 @@ window.MODULE_M12 = {
       ]
     },
     {
+      id: 'm12-s05',
       type: 'summary',
       title: 'Leadership Module Summary',
       content: `<p>You now understand the full scope of the AI transformation leadership role. Walk into any engagement knowing:</p>
@@ -122,6 +127,56 @@ window.MODULE_M12 = {
       ]
     }
   ],
+  diagram: {
+    title: 'The Four Roles of an AI Transformation Leader',
+    description: 'Every day you shift between four distinct roles — the best leaders do all four fluidly. Each requires a different mindset and set of skills.',
+    svgContent: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 360" font-family="Arial, sans-serif">' +
+      '<rect width="860" height="360" fill="#0f172a" rx="10"/>' +
+      '<text x="430" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#f1f5f9">The Four Roles of an AI Transformation Leader</text>' +
+      // Central circle
+      '<circle cx="430" cy="190" r="58" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>' +
+      '<text x="430" y="183" text-anchor="middle" font-size="12" font-weight="bold" fill="#fbbf24">AI</text>' +
+      '<text x="430" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#fbbf24">LEADER</text>' +
+      '<text x="430" y="216" text-anchor="middle" font-size="9" fill="#94a3b8">60% org, 40% tech</text>' +
+      // Connecting lines
+      '<line x1="378" y1="158" x2="260" y2="100" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>' +
+      '<line x1="482" y1="158" x2="600" y2="100" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>' +
+      '<line x1="378" y1="222" x2="260" y2="280" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>' +
+      '<line x1="482" y1="222" x2="600" y2="280" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>' +
+      // Role 1: Translator (top-left)
+      '<rect x="50" y="48" width="195" height="90" fill="#1e293b" rx="10" stroke="#3b82f6" stroke-width="2"/>' +
+      '<text x="148" y="74" text-anchor="middle" font-size="20">🗣️</text>' +
+      '<text x="148" y="96" text-anchor="middle" font-size="13" font-weight="bold" fill="#60a5fa">TRANSLATOR</text>' +
+      '<text x="148" y="114" text-anchor="middle" font-size="9" fill="#94a3b8">Data science ↔ Operations</text>' +
+      '<text x="148" y="128" text-anchor="middle" font-size="9" fill="#94a3b8">Technical ↔ Business value</text>' +
+      // Role 2: Champion (top-right)
+      '<rect x="615" y="48" width="195" height="90" fill="#1e293b" rx="10" stroke="#f59e0b" stroke-width="2"/>' +
+      '<text x="712" y="74" text-anchor="middle" font-size="20">🚀</text>' +
+      '<text x="712" y="96" text-anchor="middle" font-size="13" font-weight="bold" fill="#fbbf24">CHAMPION</text>' +
+      '<text x="712" y="114" text-anchor="middle" font-size="9" fill="#94a3b8">Drive momentum</text>' +
+      '<text x="712" y="128" text-anchor="middle" font-size="9" fill="#94a3b8">Convert skeptics</text>' +
+      // Role 3: Risk Manager (bottom-left)
+      '<rect x="50" y="238" width="195" height="90" fill="#1e293b" rx="10" stroke="#10b981" stroke-width="2"/>' +
+      '<text x="148" y="264" text-anchor="middle" font-size="20">🛡️</text>' +
+      '<text x="148" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#34d399">RISK MANAGER</text>' +
+      '<text x="148" y="304" text-anchor="middle" font-size="9" fill="#94a3b8">Safety oversight</text>' +
+      '<text x="148" y="318" text-anchor="middle" font-size="9" fill="#94a3b8">Human override systems</text>' +
+      // Role 4: Capability Builder (bottom-right)
+      '<rect x="615" y="238" width="195" height="90" fill="#1e293b" rx="10" stroke="#8b5cf6" stroke-width="2"/>' +
+      '<text x="712" y="264" text-anchor="middle" font-size="20">📈</text>' +
+      '<text x="712" y="286" text-anchor="middle" font-size="13" font-weight="bold" fill="#a78bfa">CAP. BUILDER</text>' +
+      '<text x="712" y="304" text-anchor="middle" font-size="9" fill="#94a3b8">Build client AI team</text>' +
+      '<text x="712" y="318" text-anchor="middle" font-size="9" fill="#94a3b8">Make yourself unnecessary</text>' +
+      '</svg>'
+  },
+  video: {
+    videoId: 'qp0HIF3SfI4',
+    title: 'How Great Leaders Inspire Action — Simon Sinek (TED)',
+    start: 0,
+    end: 300,
+    placement: 'm12-s03',
+    description: "Simon Sinek's famous 'Start With Why' talk is essential viewing for any transformation leader. The principles apply directly to getting refinery operators and executives to believe in and act on an AI transformation."
+  },
   glossary: [
     { term: 'Co-Pilot Framing', definition: 'Positioning AI as a support tool that enhances operator decision-making rather than replacing it — the most effective adoption framing.' },
     { term: 'Change Management', definition: 'Structured approach to transitioning individuals and organizations from current state to desired future state, managing resistance and building adoption.' },

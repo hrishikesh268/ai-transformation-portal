@@ -5,18 +5,20 @@ window.MODULE_M10 = {
   subtitle: 'Stack, Vendors & Decisions',
   sections: [
     {
+      id: 'm10-s01',
       type: 'intro',
       title: 'The Industrial AI Technology Stack',
       content: `<p>Technology architecture decisions made early in an AI program are notoriously hard to reverse. Choosing the wrong data platform, the wrong cloud vendor, or the wrong AI framework can lock a refinery into years of technical debt. This module gives you the vocabulary and framework to make — and advise on — these decisions confidently.</p>
       <p class="mt-3">The industrial AI stack spans four layers: Edge Computing, Industrial Data Platform, AI/ML Platform, and Application Layer. Each layer has different make-vs-buy tradeoffs and vendor landscape.</p>`,
       keyPoints: [
-        'Architecture decisions in Month 1 determine what\'s possible in Year 3',
+        "Architecture decisions in Month 1 determine what's possible in Year 3",
         'The stack has four layers: Edge → Data Platform → AI/ML Platform → Applications',
         'Make vs. buy decisions depend on competitive differentiation and internal capability',
         'Cloud-agnostic design prevents vendor lock-in for the most critical layers'
       ]
     },
     {
+      id: 'm10-s02',
       type: 'concept',
       title: 'The Four-Layer Industrial AI Stack',
       content: `<div class="space-y-3">
@@ -45,6 +47,7 @@ window.MODULE_M10 = {
       ]
     },
     {
+      id: 'm10-s03',
       type: 'deep-dive',
       title: 'Make vs. Buy Decision Framework',
       content: `<p>A critical strategic question in every AI program: what do you build yourself vs. what do you buy from vendors?</p>
@@ -57,7 +60,7 @@ window.MODULE_M10 = {
               <li>→ Data infrastructure (historian)</li>
               <li>→ Cloud AI/ML platforms</li>
               <li>→ Cybersecurity tools</li>
-              <li>→ Generic predictive maint.</li>
+              <li>→ Generic predictive maintenance</li>
             </ul>
           </div>
           <div class="p-3 bg-blue-900/20 border border-blue-700/30 rounded-xl">
@@ -80,6 +83,7 @@ window.MODULE_M10 = {
       ]
     },
     {
+      id: 'm10-s04',
       type: 'summary',
       title: 'Technology Architecture Summary',
       content: `<p>You now understand the complete industrial AI technology stack and the key decisions involved. In client conversations, you can:</p>
@@ -102,6 +106,60 @@ window.MODULE_M10 = {
       ]
     }
   ],
+  diagram: {
+    title: 'The Four-Layer Industrial AI Technology Stack',
+    description: 'From plant floor edge computing up to user-facing applications — each layer has distinct vendors, responsibilities, and make-vs-buy considerations.',
+    svgContent: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="Arial, sans-serif">' +
+      '<rect width="860" height="380" fill="#0f172a" rx="10"/>' +
+      '<text x="430" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#f1f5f9">Industrial AI Technology Stack — 4 Layers</text>' +
+      // Layer 4: Application (top)
+      '<rect x="40" y="46" width="780" height="70" fill="#1e293b" rx="8" stroke="#10b981" stroke-width="2"/>' +
+      '<rect x="40" y="46" width="200" height="70" fill="#10b981" opacity="0.2" rx="8"/>' +
+      '<text x="140" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#34d399">LAYER 4</text>' +
+      '<text x="140" y="98" text-anchor="middle" font-size="11" fill="#6ee7b7">Application Layer</text>' +
+      '<text x="450" y="70" text-anchor="middle" font-size="10" fill="#94a3b8">Predictive maintenance dashboards · Optimisation UIs · Operator alerts</text>' +
+      '<text x="450" y="88" text-anchor="middle" font-size="10" fill="#64748b">Vendors: Aspen Mtell · GE Predix · SparkCognition · Custom Built</text>' +
+      '<text x="780" y="82" text-anchor="middle" font-size="10" fill="#34d399" font-weight="bold">BUILD ⬆</text>' +
+      // Arrow
+      '<polygon points="430,120 420,130 440,130" fill="#475569"/>' +
+      // Layer 3: AI/ML Platform
+      '<rect x="40" y="135" width="780" height="70" fill="#1e293b" rx="8" stroke="#8b5cf6" stroke-width="2"/>' +
+      '<rect x="40" y="135" width="200" height="70" fill="#8b5cf6" opacity="0.2" rx="8"/>' +
+      '<text x="140" y="167" text-anchor="middle" font-size="13" font-weight="bold" fill="#a78bfa">LAYER 3</text>' +
+      '<text x="140" y="187" text-anchor="middle" font-size="11" fill="#c4b5fd">AI/ML Platform</text>' +
+      '<text x="450" y="159" text-anchor="middle" font-size="10" fill="#94a3b8">Model training · Experiment tracking · Model registry · Deployment · Monitoring</text>' +
+      '<text x="450" y="177" text-anchor="middle" font-size="10" fill="#64748b">Vendors: Azure ML · AWS SageMaker · Google Vertex AI · DataRobot · C3.ai</text>' +
+      '<text x="780" y="171" text-anchor="middle" font-size="10" fill="#a78bfa" font-weight="bold">BUY/BUILD</text>' +
+      // Arrow
+      '<polygon points="430,209 420,219 440,219" fill="#475569"/>' +
+      // Layer 2: Data Platform
+      '<rect x="40" y="224" width="780" height="70" fill="#1e293b" rx="8" stroke="#3b82f6" stroke-width="2"/>' +
+      '<rect x="40" y="224" width="200" height="70" fill="#3b82f6" opacity="0.2" rx="8"/>' +
+      '<text x="140" y="256" text-anchor="middle" font-size="13" font-weight="bold" fill="#60a5fa">LAYER 2</text>' +
+      '<text x="140" y="276" text-anchor="middle" font-size="11" fill="#93c5fd">Industrial Data Platform</text>' +
+      '<text x="450" y="248" text-anchor="middle" font-size="10" fill="#94a3b8">Time-series historian · Cloud data lake · Streaming pipeline · Data governance</text>' +
+      '<text x="450" y="266" text-anchor="middle" font-size="10" fill="#64748b">Vendors: OSIsoft PI (65% market) · Honeywell Uniformance · Azure Data Explorer</text>' +
+      '<text x="780" y="260" text-anchor="middle" font-size="10" fill="#60a5fa" font-weight="bold">BUY ⬆</text>' +
+      // Arrow
+      '<polygon points="430,298 420,308 440,308" fill="#475569"/>' +
+      // Layer 1: Edge
+      '<rect x="40" y="313" width="780" height="52" fill="#1e293b" rx="8" stroke="#f59e0b" stroke-width="2"/>' +
+      '<rect x="40" y="313" width="200" height="52" fill="#f59e0b" opacity="0.2" rx="8"/>' +
+      '<text x="140" y="336" text-anchor="middle" font-size="13" font-weight="bold" fill="#fbbf24">LAYER 1</text>' +
+      '<text x="140" y="354" text-anchor="middle" font-size="11" fill="#fcd34d">Edge Computing</text>' +
+      '<text x="450" y="336" text-anchor="middle" font-size="10" fill="#94a3b8">Plant floor servers · Low-latency AI inference · Local data processing</text>' +
+      '<text x="450" y="354" text-anchor="middle" font-size="10" fill="#64748b">Vendors: Dell EMC · HPE · Siemens · AWS Outposts · Rockwell Automation</text>' +
+      '<text x="780" y="344" text-anchor="middle" font-size="10" fill="#fbbf24" font-weight="bold">BUY ⬆</text>' +
+      '</svg>'
+  },
+  video: {
+    videoId: 'VwVg9jCtqaU',
+    title: 'Machine Learning Zero to Hero (Google I/O)',
+    start: 120,
+    end: 420,
+    placement: 'm10-s03',
+    description: "Google's ML Zero to Hero talk gives you a developer's perspective on building ML in production — the same challenges (data pipelines, model serving, monitoring) you will face in industrial AI architecture decisions."
+  },
   glossary: [
     { term: 'OSIsoft PI', definition: 'The leading industrial time-series data historian used in 65% of refineries worldwide. Now owned by AVEVA.' },
     { term: 'MLOps', definition: 'Machine Learning Operations — DevOps practices applied to ML model development, deployment, and monitoring lifecycle.' },
